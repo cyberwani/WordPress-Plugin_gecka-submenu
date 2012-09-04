@@ -12,7 +12,7 @@ Licence: GPL2
 /* Copyright 2010  Gecka SARL (email: contact@gecka.nc). All rights reserved
 
     This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as 
+    it under the terms of the GNU General Public License, version 2, as
     published by the Free Software Foundation.
 
     This program is distributed in the hope that it will be useful,
@@ -35,8 +35,8 @@ function gksm_activation_check(){
 }
 register_activation_hook(__FILE__, 'gksm_activation_check');
 
-define('GKSM_PATH' , WP_PLUGIN_DIR . "/" . plugin_basename(dirname(__FILE__)) );
-define('GKSM_URL'  , WP_PLUGIN_URL . "/" . plugin_basename(dirname(__FILE__)) );
+define('GKSM_PATH' , plugin_dir_path(__FILE__) );
+define('GKSM_URL'  , plugin_dir_url(__FILE__) );
 
 //needed global vars for widget usage
 $GKSM_ID = $GKSM_MENUID = null;
@@ -46,9 +46,9 @@ require GKSM_PATH . '/gecka-submenu.class.php';
 // Instantiate the class
 if (class_exists('Gecka_Submenu')) {
     if (!isset($GkSm)) {
-        
+
     	include GKSM_PATH . '/models/Submenu.php';
     	$GkSm = new Gecka_Submenu();
-        
+
     }
 }
